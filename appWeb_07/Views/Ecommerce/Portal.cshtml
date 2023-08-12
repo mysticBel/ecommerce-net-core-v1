@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "Portal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<appWeb_07.Models.ProductoModel>
+
+<h2>Portal de Ventas Tienda</h2>
+<link rel="stylesheet" href="~/css/EcommerceStyle.css"/>
+
+<div>
+    <a asp-action="Canasta" asp-controller="Ecommerce" class="btn btn-primary">
+        Ir a la Canasta
+    </a>
+</div>
+
+<div class="portal">
+    @foreach (var item in Model)
+    {
+        <div class="registro">
+            <em>Código:</em>@Html.DisplayFor(modelItem => item.idproducto)
+            <br>
+            <em>Descripción:</em>@Html.DisplayFor(modelItem => item.nombreproducto)
+            <br>
+            <em>Categoría:</em>@Html.DisplayFor(modelItem => item.nombrecategoria)
+            <br>
+            <em>Precio:</em>@Html.DisplayFor(modelItem => item.precio)
+            <br>
+            <em>Disponible:</em>@Html.DisplayFor(modelItem => item.unidades)
+            <br>
+            <img src="@Url.Content(string.Format("~/imagenes/{0}.jpg",
+            item.idproducto))" />
+            <br>
+            @Html.ActionLink("Agregar", "Agregar", new { id = item.idproducto })
+        </div>
+    }
+</div>

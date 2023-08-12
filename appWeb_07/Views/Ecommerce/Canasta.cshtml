@@ -1,0 +1,42 @@
+﻿
+
+@model IEnumerable<appWeb_07.Models.ItemModel>
+
+
+@{
+    ViewData["Title"] = "Canasta";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Canasta</h1>
+<p><a asp-action="Portal" class="btn btn-primary">Ir al Listado</a></p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.idproducto)</th>
+            <th>@Html.DisplayNameFor(model => model.descripcion)</th>
+            <th>@Html.DisplayNameFor(model => model.categoria)</th>
+            <th>@Html.DisplayNameFor(model => model.precio)</th>
+            <th>@Html.DisplayNameFor(model => model.unidades)</th>
+            <th>@Html.DisplayNameFor(model => model.monto)</th>
+            <th>Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.idproducto)</td>
+                <td>@Html.DisplayFor(modelItem => item.descripcion)</td>
+                <td>@Html.DisplayFor(modelItem => item.categoria)</td>
+                <td>@Html.DisplayFor(modelItem => item.precio)</td>
+                <td>@Html.DisplayFor(modelItem => item.unidades)</td>
+                <td>@Html.DisplayFor(modelItem => item.monto)</td>
+                <td>
+                    @Html.ActionLink("Eliminar",
+                "Delete", new {id = item.idproducto})
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
